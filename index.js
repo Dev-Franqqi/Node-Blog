@@ -3,18 +3,20 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./modules/blog');
 const { concat } = require('lodash');
+require("dotenv").config();
+
 
 const router = require('./routes/routes')
 //express app
 const app = express();
 // connect to mongoDB
-const dbuii ='mongodb+srv://DEV-FRANQQI:franky%401@nodetut.h8xvxby.mongodb.net/nodetut?retryWrites=true&w=majority'
+const dbuii =process.env.MONGODB_URL
 mongoose.connect(dbuii,{useNewUrlParser:true, useUnifiedTopology:true})
 .then((result)=>{
         
 
     console.log('connected to the database');
-    app.listen(3000);
+    app.listen(process.env.PORT);
 
      
 
